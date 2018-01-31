@@ -1,13 +1,22 @@
+from abc import ABCMeta, abstractmethod
+
 import numpy as np 
 import math
 
+#Class to store constants for the library
+
 class Constants(object):
 
+	#Mathematical constants
 	pi = np.pi
 	e = np.e
 
-	def __init__(self):
-		pass
+	#Impetus type constants
+	DEG = "deg"
+	RAD = "rad"
+
+
+#Class to implement mathematical operations
 
 class Operations(Constants):
 
@@ -21,6 +30,7 @@ class Operations(Constants):
 	@classmethod
 	def deg2rad(cls, angle):
 		return math.radians(angle)
+
 
 
 

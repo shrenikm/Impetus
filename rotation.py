@@ -1,9 +1,14 @@
 from abc import ABCMeta, abstractmethod
 
+from numerical import Constants
+
 import numpy as np 
 from math import sin 
 from math import cos
 from math import pi
+
+#Main class that serves as a blueprint for all rotation related functions.
+#Objects of the Rotation class cannot be created
 
 class Rotation(object):
 
@@ -20,15 +25,6 @@ class Rotation(object):
 	def set_units(self, units):
 		self.units = units
 
-	# def compute_axis_rm(self, angle, axis):
-
-	# 	if self.units = 'deg':
-	# 		angle = angle * pi / 180.0
-
-	# 	r = np.zeros([3, 3])
-	# 	if axis == 'x':
-	# 		r[0, 0] = 1
-	# 		r[1, 1] = cos(angle)
 
 
 

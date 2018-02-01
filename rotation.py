@@ -1,6 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 from numerical import Constants
+from numerical import Operations
 
 import numpy as np 
 from math import sin 
@@ -12,18 +13,28 @@ from math import pi
 
 class Rotation(object):
 
-	__metaclass__ = ABCMeta
 
-	def __init__(self, units = 'rad'):
-		self.units = units
+    __metaclass__ = ABCMeta
 
-	@abstractmethod
-	def get_units(self):
-		return self.units 
+    def __init__(self, units = 'rad'):
+        self.units = units
 
-	@abstractmethod
-	def set_units(self, units):
-		self.units = units
+    @abstractmethod
+    def get_units(self):
+
+        return self.units 
+
+    @abstractmethod
+    def set_units(self, units):
+
+        self.units = units
+
+    def conv_angle(self, angle):
+
+        if (self.units == Constants.DEG):
+            return Operations.deg2rad(angle)
+        return angle
+
 
 
 

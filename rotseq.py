@@ -12,7 +12,7 @@ class RotSeq(Rotation, Operations):
     def __init__(self, units = 'rad'):
 
         super(RotSeq, self).__init__(units)
-        self.sequence = {}
+        self.sequence = [[], []]
 
     def get_units(self):
 
@@ -22,9 +22,8 @@ class RotSeq(Rotation, Operations):
 
         super(RotSeq, self).set_units(units)
 
-    def add_rotation(self, angle, axis):
-        print angle
-        angle = self.conv_angle(angle)
-        print angle
-        self.sequence.update({axis: angle})
+    def add_rotation(self, angles, axes):
+        angles = self.conv_angles(angles)
+        self.sequence[0] += axes
+        self.sequence[1] += angles
         pass

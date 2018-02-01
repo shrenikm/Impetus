@@ -18,9 +18,10 @@ print r.get_units()
 # print r.gen_rmz(30)
 
 seq = RotSeq('deg')
-seq.add_rotation(30, Constants.GX)
-seq.add_rotation(30, Constants.LZ)
+seq.add_rotation([30, 30, 20], [Constants.GX, Constants.LZ, Constants.LY])
+seq.add_rotation([90], [Constants.LX])
 print seq.sequence
+
 
 
 

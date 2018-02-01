@@ -32,8 +32,14 @@ class Rotation(object):
     def conv_angle(self, angle):
 
         if (self.units == Constants.DEG):
-            return Operations.deg2rad(angle)
+            angle = Operations.deg2rad(angle)
         return angle
+
+    def conv_angles(self, angles):
+
+        if (self.units == Constants.DEG):
+            angles = [Operations.deg2rad(angles[i]) for i in range(len(angles))]
+        return angles
 
 
 

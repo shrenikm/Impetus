@@ -2,6 +2,7 @@ from rotation import Rotation
 from numerical import Constants
 from rotmat3D import RotMat3D
 from rotseq import RotSeq
+from frame import Frame
 
 
 r = RotMat3D()
@@ -18,10 +19,12 @@ print r.get_units()
 # print r.gen_rmz(30)
 
 seq = RotSeq('deg')
-seq.add_rotation([30, 30, 20], [Constants.GX, Constants.LZ, Constants.LY])
-seq.add_rotation([90], [Constants.LX])
+seq.add_rotation([30, 30, 20], [Constants.gx, Constants.lz, Constants.ly])
+seq.add_rotation([90], [Constants.lx])
 print seq.sequence
 
+f = Frame()
+print f.base, f.z
 
 
 

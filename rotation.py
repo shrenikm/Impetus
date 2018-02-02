@@ -8,8 +8,8 @@ from math import sin
 from math import cos
 from math import pi
 
-#Main class that serves as a blueprint for all rotation related functions.
-#Objects of the Rotation class cannot be created
+# Main class that serves as a blueprint for all rotation related functions.
+# Objects of the Rotation class cannot be created.
 
 class Rotation(object):
 
@@ -31,13 +31,13 @@ class Rotation(object):
 
     def conv_angle(self, angle):
 
-        if (self.units == Constants.DEG):
+        if (self.units == Constants.deg):
             angle = Operations.deg2rad(angle)
         return angle
 
     def conv_angles(self, angles):
 
-        if (self.units == Constants.DEG):
+        if (self.units == Constants.deg):
             angles = [Operations.deg2rad(angles[i]) for i in range(len(angles))]
         return angles
 

@@ -4,7 +4,7 @@ from rotation import Rotation
 from numerical import Constants
 from numerical import Operations
 
-#Class that implements rotation sequences and bundles them in a dictionary 
+# Class that implements rotation sequences and bundles them in a dictionary.
 
 class RotSeq(Rotation, Operations):
 
@@ -27,3 +27,4 @@ class RotSeq(Rotation, Operations):
         self.sequence[0] += axes
         self.sequence[1] += angles
         pass
+

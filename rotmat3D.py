@@ -4,7 +4,7 @@ from rotation import Rotation
 from numerical import Constants
 from numerical import Operations
 
-#Class that implements operations related to rotation matrices
+# Class that implements operations related to rotation matrices.
 
 class RotMat3D(Rotation, Operations):
 
@@ -21,7 +21,7 @@ class RotMat3D(Rotation, Operations):
 
         super(RotMat3D, self).set_units(units)
 
-    #The rotation matrices for simple single angle rotations about the x, y or z axes
+    # The rotation matrices for simple single angle rotations about the x, y or z axes.
 
     def gen_rmx(self, angle):
 
@@ -65,7 +65,7 @@ class RotMat3D(Rotation, Operations):
 
         return r
 
-    #Euler angle rotation matrices
+    #Euler angle rotation matrices.
 
     def gen_euler_rm(self, angles, seq):
 

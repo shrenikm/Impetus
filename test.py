@@ -1,15 +1,14 @@
 from rotation import Rotation
 from numerical import Constants
-from rotmat3D import RotMat3D
+from rotmat import RotMat
 from rotseq import RotSeq
 from frame import Frame
 
 
-r = RotMat3D()
+r = RotMat()
 print r.get_units()
 r.set_units('deg')
 print r.get_units()
-
 
 # print RotMat3D.pi, r.pi, RotMat3D.e
 # print RotMat3D.rad2deg(RotMat3D.pi)
@@ -24,7 +23,6 @@ seq.add_rotation([90], [Constants.lx])
 print seq.sequence
 
 f = Frame()
-print f.base, f.z
-
-
-
+f2 = Frame(f)
+print r.gen_rm_stdframe(f)
+# print f.base, f.z

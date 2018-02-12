@@ -1,12 +1,12 @@
 from abc import ABCMeta, abstractmethod
 
-import numpy as np 
+import numpy as np
 import math
 
 # Class to store constants for the library.
 
-class Constants(object):
 
+class Constants(object):
 
     # Mathematical constants
     pi = np.pi
@@ -20,7 +20,7 @@ class Constants(object):
     std_axis_x = np.array([[1], [0], [0]])
     std_axis_y = np.array([[0], [1], [0]])
     std_axis_z = np.array([[0], [0], [1]])
-
+    std_origin = np.array([[0], [0], [0]])
 
     # Frame constants
 
@@ -28,7 +28,6 @@ class Constants(object):
 # Class to implement mathematical operations.
 
 class Operations(Constants):
-
 
     def __init__(self):
         pass
@@ -42,8 +41,3 @@ class Operations(Constants):
     def deg2rad(cls, angle):
 
         return math.radians(angle)
-
-
-
-
-

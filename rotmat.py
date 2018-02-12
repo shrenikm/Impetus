@@ -1,4 +1,4 @@
-import numpy as np 
+import numpy as np
 
 from rotation import Rotation
 from numerical import Constants
@@ -6,22 +6,51 @@ from numerical import Operations
 
 # Class that implements operations related to rotation matrices.
 
-class RotMat3D(Rotation, Operations):
 
+class RotMat(Rotation, Operations):
 
-    def __init__(self, units = 'rad'):
+    def __init__(self, units='rad'):
 
-        super(RotMat3D, self).__init__(units)
-        
+        super(RotMat, self).__init__(units)
+
     def get_units(self):
 
-        return super(RotMat3D, self).get_units()
+        return super(RotMat, self).get_units()
 
     def set_units(self, units):
 
-        super(RotMat3D, self).set_units(units)
+        super(RotMat, self).set_units(units)
 
-    # The rotation matrices for simple single angle rotations about the x, y or z axes.
+    def gen_rm_frame(self, frame):
+
+        r = np.zeros([3, 3])
+        r[0, :] = frame.x.T
+        r[1, :] = frame.y.T
+        r[2, :] = frame.z.T
+
+        return r
+
+    def gen_rm_stdframe(self, frame):
+
+        r = self.gen_rm_frame(frame)
+        frame_tmp = frame
+
+        while frame_tmp.base is not None:
+
+            r = np.dot(self.gen_rm_frame(frame_tmp.base), r)
+            frame_tmp = frame.base
+
+        return r
+
+    def gen_rm_rotframe(self, frame_end, frame_start=None):
+
+        r = np.zeros([3, 3])
+
+        if frame_start is None:
+
+            r = self.gen_rm_frame(frame_end)
+
+        return r
 
     def gen_rmx(self, angle):
 
@@ -65,13 +94,8 @@ class RotMat3D(Rotation, Operations):
 
         return r
 
-    #Euler angle rotation matrices.
+    # Euler angle rotation matrices.
 
     def gen_euler_rm(self, angles, seq):
 
         pass
-
-
-
-
-

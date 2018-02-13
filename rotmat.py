@@ -21,7 +21,7 @@ class RotMat(Rotation, Operations):
 
         super(RotMat, self).set_units(units)
 
-    def gen_rm_frame(self, frame):
+    def gen_rm_single_frame(self, frame):
 
         r = np.zeros([3, 3])
         r[0, :] = frame.x.T
@@ -30,27 +30,26 @@ class RotMat(Rotation, Operations):
 
         return r
 
-    def gen_rm_stdframe(self, frame):
+    def gen_rm_all_frame(self, frame):
 
-        r = self.gen_rm_frame(frame)
+        r = self.gen_rm_single_frame(frame)
         frame_tmp = frame
 
         while frame_tmp.base is not None:
 
-            r = np.dot(self.gen_rm_frame(frame_tmp.base), r)
-            frame_tmp = frame.base
+            r = np.dot(self.gen_rm_single_frame(frame_tmp.base), r)
+            frame_tmp = frame_tmp.base
 
         return r
 
-    def gen_rm_rotframe(self, frame_end, frame_start=None):
+    def gen_rm_rotframe(self, frame_start, frame_end=None):
 
-        r = np.zeros([3, 3])
+        if frame_end is None:
+            return self.gen_rm_all_frame(frame_start)
 
-        if frame_start is None:
-
-            r = self.gen_rm_frame(frame_end)
-
-        return r
+        r_start = self.gen_rm_all_frame(frame_start)
+        r_end = self.gen_rm_all_frame(frame_end)
+        return np.dot(r_start.T, r_end)
 
     def gen_rmx(self, angle):
 

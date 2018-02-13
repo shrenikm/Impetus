@@ -1,3 +1,5 @@
+import numpy as np
+
 from rotation import Rotation
 from numerical import Constants
 from rotmat import RotMat
@@ -22,7 +24,11 @@ seq.add_rotation([30, 30, 20], [Constants.gx, Constants.lz, Constants.ly])
 seq.add_rotation([90], [Constants.lx])
 print seq.sequence
 
-f = Frame()
-f2 = Frame(f)
-print r.gen_rm_stdframe(f)
+f2 = Frame(x=np.random.rand(3, 1),
+           y=np.random.rand(3, 1), z=np.random.rand(3, 1))
+f3 = Frame(base=f2, x=np.random.rand(3, 1),
+           y=np.random.rand(3, 1), z=np.random.rand(3, 1))
+f4 = Frame(base=f3, x=np.random.rand(3, 1),
+           y=np.random.rand(3, 1), z=np.random.rand(3, 1))
+print r.gen_rm_rotframe(f4)
 # print f.base, f.z

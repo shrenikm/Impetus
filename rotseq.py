@@ -4,7 +4,7 @@ from rotation import Rotation
 from numerical import Constants
 from numerical import Operations
 
-# Class that implements rotation sequences and bundles them in a dictionary.
+# Class that implements rotation sequences and bundles them in a list representation.
 
 
 class RotSeq(Rotation, Operations):

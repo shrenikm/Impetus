@@ -5,6 +5,7 @@ from numeric.constants import Constants
 from rotmat import RotMat
 from rotseq import RotSeq
 from constructs.base import Frame
+from constructs.base import Vector, Axis
 
 
 r = RotMat()

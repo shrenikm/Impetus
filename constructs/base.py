@@ -1,10 +1,8 @@
 import numpy as np
 
-from numerical import Constants
+from numeric.constants import Constants
 
 # Class that deals with creating reference frames.
-# Whenever dealing with frames, the standard frame must be created first with an empty dictionary base.
-
 
 class Frame(Constants):
 
@@ -20,4 +18,5 @@ class Frame(Constants):
         self.x = x
         self.y = y
         self.z = z
+        self.origin = origin
         self.is_std = is_std

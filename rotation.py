@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
-from numerical import Constants
-from numerical import Operations
+from numeric.constants import Constants
+from numeric.operations import Operations
 
 import numpy as np
 from math import sin

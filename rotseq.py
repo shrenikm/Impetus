@@ -1,8 +1,8 @@
 import numpy as np
 
 from rotation import Rotation
-from numerical import Constants
-from numerical import Operations
+from numeric.constants import Constants
+from numeric.operations import Operations
 
 # Class that implements rotation sequences and bundles them in a list representation.
 

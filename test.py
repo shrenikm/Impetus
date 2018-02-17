@@ -1,10 +1,10 @@
 import numpy as np
 
 from rotation import Rotation
-from numerical import Constants
+from numeric.constants import Constants
 from rotmat import RotMat
 from rotseq import RotSeq
-from frame import Frame
+from constructs.base import Frame
 
 
 r = RotMat()

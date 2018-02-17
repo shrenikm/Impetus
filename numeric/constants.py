@@ -1,5 +1,3 @@
-from abc import ABCMeta, abstractmethod
-
 import numpy as np
 import math
 
@@ -22,22 +20,3 @@ class Constants(object):
     std_axis_z = np.array([[0], [0], [1]])
     std_origin = np.array([[0], [0], [0]])
 
-    # Frame constants
-
-
-# Class to implement mathematical operations.
-
-class Operations(Constants):
-
-    def __init__(self):
-        pass
-
-    @classmethod
-    def rad2deg(cls, angle):
-
-        return math.degrees(angle)
-
-    @classmethod
-    def deg2rad(cls, angle):
-
-        return math.radians(angle)

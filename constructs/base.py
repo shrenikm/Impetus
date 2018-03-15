@@ -2,7 +2,7 @@ import numpy as np
 
 from .. numeric.constants import Constants
 
-# Class that deals with creating reference frames.
+# Class that deals with creating base construct classes for kinematics, dynamcics and planning
 
 
 class Frame(Constants):
@@ -33,8 +33,3 @@ class Vector(Constants):
         self.z = z
 
 
-class Axis(Vector, Constants):
-
-    def __init__(self, base=None, x=0, y=0, z=0):
-
-        super(Axis, self).__init__(base, x, y, z)

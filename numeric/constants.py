@@ -12,6 +12,7 @@ class Constants(object):
 
     # Impetus type constants
     deg, rad = 'deg', 'rad'
+    m, mm, cm = 'm', 'mm', 'cm'
 
     # Axis constants
     gx, gy, gz, lx, ly, lz = 'X', 'Y', 'Z', 'x', 'y', 'z'

@@ -1,8 +1,8 @@
 import numpy as np
 
 from rotation import Rotation
-from numeric.constants import Constants
-from numeric.operations import Operations
+from .. numeric.constants import Constants
+from .. numeric.operations import Operations
 
 # Class that implements operations related to rotation matrices.
 

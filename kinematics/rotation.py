@@ -1,12 +1,13 @@
 from abc import ABCMeta, abstractmethod
 
-from numeric.constants import Constants
-from numeric.operations import Operations
-
 import numpy as np
 from math import sin
 from math import cos
 from math import pi
+
+from .. numeric.constants import Constants
+from .. numeric.operations import Operations
+
 
 # Main class that serves as a blueprint for all rotation related functions.
 # Objects of the Rotation class cannot be created.

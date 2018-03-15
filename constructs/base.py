@@ -1,6 +1,6 @@
 import numpy as np
 
-from numeric.constants import Constants
+from .. numeric.constants import Constants
 
 # Class that deals with creating reference frames.
 

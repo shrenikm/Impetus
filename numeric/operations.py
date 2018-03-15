@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-from numeric.constants import Constants
+from constants import Constants
 
 # Class to implement mathematical operations.
 

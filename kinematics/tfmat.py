@@ -4,15 +4,18 @@ from transformation import Transformation
 from .. numeric.constants import Constants
 from .. numeric.operations import Operations
 from .. constructs.base import Frame
+from rotmat import RotMat
 
 # Class that implements operations related to rotation matrices.
 
 
 class TfMat(Transformation, Operations):
 
+
     def __init__(self, angle_units='rad', dist_units='m'):
 
         super(TfMat, self).__init__(angle_units, dist_units)
+        self.rotmat = RotMat(self.angle_units)
 
     def get_angle_units(self):
 
@@ -48,20 +51,28 @@ class TfMat(Transformation, Operations):
 
     def gen_tm_all_frame(self, frame):
 
-        r = self.gen_rm_single_frame(frame)
+
+        rm = self.rotmat.gen_rm_single_frame(frame)
         frame_tmp = frame
 
         while frame_tmp.base is not None:
 
-            r = np.dot(self.gen_rm_single_frame(frame_tmp.base), r)
+            r = np.dot(self.rotmat.gen_rm_single_frame(frame_tmp.base), rm)
             frame_tmp = frame_tmp.base
 
-        return self.gen_tm_from_rot(r, frame.compute_world_origin())
+        return self.gen_tm_from_rot(rm, frame.compute_world_origin())
 
     def gen_tm_rotframe(self, frame_start, frame_end):
 
-        r_start = self.gen_rm_all_frame(frame_start)
-        r_end = self.gen_rm_all_frame(frame_end)
-        r = np.dot(r_start.T, r_end)
 
-        return self.gen_tm_from_rot(r, frame_end.compute_world_origin() - frame_start.compute_world_origin())
+        rm_start = self.rotmat.gen_rm_all_frame(frame_start)
+        rm_end = self.rotmat.gen_rm_all_frame(frame_end)
+        rm = np.dot(rm_start.T, rm_end)
+
+        return self.gen_tm_from_rot(rm, frame_end.compute_world_origin() - frame_start.compute_world_origin())
+
+    def invert(self, tm):
+
+        rm = tm[0:3, 0:3]
+        d = tmp[3, 0:3]
+        return np.concatenate((np.concatenate((rm.T, -np.dot(rm.T, d)), axis = 1)), axis = 0)

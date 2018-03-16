@@ -46,7 +46,7 @@ class RotMat(Rotation, Operations):
 
         r_start = self.gen_rm_all_frame(frame_start)
         r_end = self.gen_rm_all_frame(frame_end)
-        return np.dot(r_start.T, r_end)
+        return np.dot(r_start, r_end.T)
 
     def gen_rmx(self, angle):
 

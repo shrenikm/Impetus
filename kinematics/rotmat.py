@@ -33,19 +33,16 @@ class RotMat(Rotation, Operations):
     def gen_rm_all_frame(self, frame):
 
         r = self.gen_rm_single_frame(frame)
-        frame_tmp = frame
+        tmp_frame = frame
 
-        while frame_tmp.base is not None:
+        while tmp_frame.base is not None:
 
-            r = np.dot(self.gen_rm_single_frame(frame_tmp.base), r)
-            frame_tmp = frame_tmp.base
+            r = np.dot(self.gen_rm_single_frame(tmp_frame.base), r)
+            tmp_frame = tmp_frame.base
 
         return r
 
-    def gen_rm_rotframe(self, frame_start, frame_end=None):
-
-        if frame_end is None:
-            return self.gen_rm_all_frame(frame_start)
+    def gen_rm_rotframe(self, frame_start, frame_end):
 
         r_start = self.gen_rm_all_frame(frame_start)
         r_end = self.gen_rm_all_frame(frame_end)

@@ -22,6 +22,18 @@ class Frame(Constants):
         self.origin = origin
         self.is_std = is_std
 
+    def compute_world_origin(self):
+
+        world_origin = Constants.vector_zero
+        tmp_frame = self
+
+        while tmp_frame.base is not None:
+
+            world_origin += tmp_frame.origin
+            tmp_frame = tmp_frame.base
+
+        return world_origin
+
 
 class Vector(Constants):
 
@@ -31,5 +43,3 @@ class Vector(Constants):
         self.x = x
         self.y = y
         self.z = z
-
-

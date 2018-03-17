@@ -1,7 +1,8 @@
 import numpy as np
 
 from .. numeric.constants import Constants
-
+from .. numeric.operations import Operations
+from .. kinematics.rotmat import RotMat
 # Class that deals with creating base construct classes for kinematics, dynamcics and planning
 
 
@@ -16,11 +17,13 @@ class Frame(Constants):
             is_std=True):
 
         self.base = base
-        self.x = x
-        self.y = y
-        self.z = z
+        self.x = Operations.normalize_vector(x)
+        self.y = Operations.normalize_vector(y)
+        self.z = Operations.normalize_vector(z)
         self.origin = origin
         self.is_std = is_std
+
+
 
     def compute_world_origin(self):
 
@@ -37,9 +40,32 @@ class Frame(Constants):
 
 class Vector(Constants):
 
-    def __init__(self, base=None, x=0, y=0, z=0):
+    def __init__(self, x=0, y=0, z=0, dist_units = Constants.m, base_frame=Frame()):
 
-        self.base = base
+        self.base_frame = base_frame
         self.x = x
         self.y = y
         self.z = z
+
+    def get_dist_units(self):
+
+        return self.dist_units
+
+    def set_dist_untis(self, dist_units):
+
+        self.dist_units = dist_units
+
+    def get_vector(self):
+
+        return np.array([[self.x], [self.y], [self.z]])
+
+    def get_vector_hom(self):
+
+        return np.concatenate((self.get_vector(), np.array([[1]])), axis = 0)
+
+    def compute_world_vector(self):
+
+        rm = RotMat.gen_rm_all_frame(self.base_frame)
+        return np.dot(rm, self.get_vector())
+
+

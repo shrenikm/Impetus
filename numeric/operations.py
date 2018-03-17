@@ -19,3 +19,8 @@ class Operations(Constants):
     def deg2rad(cls, angle):
 
         return math.radians(angle)
+
+    @classmethod
+    def normalize_vector(cls, v):
+
+        return v/math.sqrt(np.sum(v*v))

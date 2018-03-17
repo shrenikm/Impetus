@@ -9,19 +9,20 @@ from .. numeric.operations import Operations
 
 class RotMat(Rotation, Operations):
 
-    def __init__(self, units='rad'):
+    def __init__(self, angle_units='rad'):
 
-        super(RotMat, self).__init__(units)
+        super(RotMat, self).__init__(angle_units)
 
-    def get_units(self):
+    def get_angle_units(self):
 
-        return super(RotMat, self).get_units()
+        return super(RotMat, self).get_angle_units()
 
-    def set_units(self, units):
+    def set_angle_units(self, angle_units):
 
-        super(RotMat, self).set_units(units)
+        super(RotMat, self).set_angle_units(angle_units)
 
-    def gen_rm_single_frame(self, frame):
+    @classmethod
+    def gen_rm_single_frame(cls, frame):
 
         r = np.zeros([3, 3])
         r[0, :] = frame.x.T
@@ -30,22 +31,23 @@ class RotMat(Rotation, Operations):
 
         return r
 
-    def gen_rm_all_frame(self, frame):
+    @classmethod
+    def gen_rm_all_frame(cls, frame):
 
-        r = self.gen_rm_single_frame(frame)
+        r = RotMat.gen_rm_single_frame(frame)
         tmp_frame = frame
 
         while tmp_frame.base is not None:
 
-            r = np.dot(self.gen_rm_single_frame(tmp_frame.base), r)
+            r = np.dot(RotMat.gen_rm_single_frame(tmp_frame.base), r)
             tmp_frame = tmp_frame.base
 
         return r
 
-    def gen_rm_rotframe(self, frame_start, frame_end):
+    def gen_rm_rotframe(cls, frame_start, frame_end):
 
-        r_start = self.gen_rm_all_frame(frame_start)
-        r_end = self.gen_rm_all_frame(frame_end)
+        r_start = RotMat.gen_rm_all_frame(frame_start)
+        r_end = RotMat.gen_rm_all_frame(frame_end)
         return np.dot(r_start, r_end.T)
 
     def gen_rmx(self, angle):

@@ -17,28 +17,28 @@ class Rotation(object):
 
     __metaclass__ = ABCMeta
 
-    def __init__(self, units='rad'):
-        self.units = units
+    def __init__(self, angle_units='rad'):
+        self.angle_units = angle_units
 
     @abstractmethod
-    def get_units(self):
+    def get_angle_units(self):
 
-        return self.units
+        return self.angle_units
 
     @abstractmethod
-    def set_units(self, units):
+    def set_angle_units(self, angle_units):
 
-        self.units = units
+        self.angle_units = angle_units
 
     def conv_angle(self, angle):
 
-        if (self.units == Constants.deg):
+        if (self.angle_units == Constants.deg):
             angle = Operations.deg2rad(angle)
         return angle
 
     def conv_angles(self, angles):
 
-        if (self.units == Constants.deg):
+        if (self.angle_units == Constants.deg):
             angles = [Operations.deg2rad(angles[i])
                       for i in range(len(angles))]
         return angles

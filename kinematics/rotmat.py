@@ -44,6 +44,7 @@ class RotMat(Rotation, Operations):
 
         return r
 
+    @classmethod
     def gen_rm_rotframe(cls, frame_start, frame_end):
 
         r_start = RotMat.gen_rm_all_frame(frame_start)

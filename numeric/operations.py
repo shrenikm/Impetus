@@ -24,3 +24,15 @@ class Operations(Constants):
     def normalize_vector(cls, v):
 
         return v/math.sqrt(np.sum(v*v))
+
+    @classmethod
+    def clip_bound(cls, x, lower, upper):
+
+        for i in range(len(lower)):
+
+            if x[i] < lower[i] and lower[i] != Constants.ninfinity:
+                x[i] = lower[i]
+            if x[i] > upper[i] and upper[i] != Constants.infinity:
+                x[i] = upper[i]
+
+        return x

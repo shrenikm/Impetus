@@ -23,8 +23,6 @@ class Frame(Constants):
         self.origin = origin
         self.is_std = is_std
 
-
-
     def compute_world_origin(self):
 
         world_origin = Constants.vector_zero
@@ -40,7 +38,7 @@ class Frame(Constants):
 
 class Vector(Constants):
 
-    def __init__(self, x=0, y=0, z=0, dist_units = Constants.m, base_frame=Frame()):
+    def __init__(self, x=0, y=0, z=0, dist_units=Constants.m, base_frame=Frame()):
 
         self.base_frame = base_frame
         self.x = x
@@ -61,11 +59,47 @@ class Vector(Constants):
 
     def get_vector_hom(self):
 
-        return np.concatenate((self.get_vector(), np.array([[1]])), axis = 0)
+        return np.concatenate((self.get_vector(), np.array([[1]])), axis=0)
 
     def compute_world_vector(self):
 
         rm = RotMat.gen_rm_all_frame(self.base_frame)
         return np.dot(rm, self.get_vector())
+
+
+class Configuration(Constants):
+
+    def __init__(self, dim = 3):
+
+        self.units = [Constants.m]*dim
+        self.lower_limits = [Constants.ninfinity]*dim
+        self.upper_limtis = [constants.infinity]*dim
+        self.configuration = np.zeros([dim, 1])
+
+    def set_units(self, units):
+
+        for i, el in enumerate(units):
+            self.units[i] = el
+
+    def set_configuration(self, configuration):
+
+        for i, el in enumerate(configuration):
+            self.configuration[i] = el
+
+    def set_lower_limits(self, lower_limits):
+
+        for i, el in enumerate(lower_limits):
+            self.lower_limits[i] = el
+
+    def set_upper_limits(self, upper_limtis):
+
+        for i, el in enumerate(upper_limtis):
+            self.upper_limtis[i] = el
+
+    def clip_configuration(self):
+
+        self.configuration = Operations.clip_bound(self.configuration, self.lower_limits, self.upper_limtis)
+
+    
 
 

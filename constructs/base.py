@@ -69,11 +69,11 @@ class Vector(Constants):
 
 class Configuration(Constants):
 
-    def __init__(self, dim = 3):
+    def __init__(self, dim=3):
 
         self.units = [Constants.m]*dim
         self.lower_limits = [Constants.ninfinity]*dim
-        self.upper_limtis = [constants.infinity]*dim
+        self.upper_limtis = [Constants.infinity]*dim
         self.configuration = np.zeros([dim, 1])
 
     def set_units(self, units):
@@ -96,10 +96,7 @@ class Configuration(Constants):
         for i, el in enumerate(upper_limtis):
             self.upper_limtis[i] = el
 
-    def clip_configuration(self):
+    def clip(self):
 
-        self.configuration = Operations.clip_bound(self.configuration, self.lower_limits, self.upper_limtis)
-
-    
-
-
+        self.configuration = Operations.clip_bound(
+            self.configuration, self.lower_limits, self.upper_limtis)

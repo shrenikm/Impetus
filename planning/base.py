@@ -1,35 +1,43 @@
+from abc import ABCMeta, abstractmethod
+
 import numpy as np
-import random
 
 from .. numeric.constants import Constants
 from .. numeric.operations import Operations
 from .. constructs.base import Configuration
-from .. planning.base import RRT
-
-# Standard RRT implementations
 
 
-class rrt_standard(RRT):
+# Blueprint for the RRT construct
+
+
+class RRT(object):
+
+    __metaclass__ = ABCMeta
 
     def __init__(self, config=Configuration()):
 
-        super(rrt_standard, self).__init__(config)
+        self.config = config
 
+    def set_config(self, config):
+
+        self.config = config
+
+    @abstractmethod
     def initialize_random_configuration(self):
 
-        rand_base = np.random.rand(self.config.dim, 1)
-        a = self.config.get_lower_limits_arr()
-        b = self.config.get_upper_limits_arr()
-        return a + rand_base*(b-a)
+        pass
 
+    @abstractmethod
     def compute_distance(self, x, y):
 
         pass
 
+    @abstractmethod
     def is_config_in_free(self, x):
 
         pass
 
+    @abstractmethod
     def is_line_in_free(self, x, y):
 
         pass

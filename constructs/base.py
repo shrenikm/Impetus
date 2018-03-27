@@ -71,32 +71,41 @@ class Configuration(Constants):
 
     def __init__(self, dim=3):
 
-        self.units = [Constants.m]*dim
-        self.lower_limits = [Constants.ninfinity]*dim
-        self.upper_limtis = [Constants.infinity]*dim
-        self.configuration = np.zeros([dim, 1])
+        self.dim = dim
+        self.units = [Constants.m]*self.dim
+        self.lower_limits = [Constants.ninfinity]*self.dim
+        self.upper_limits = [Constants.infinity]*self.dim
+        self.value = np.zeros([self.dim, 1])
 
     def set_units(self, units):
 
         for i, el in enumerate(units):
             self.units[i] = el
 
-    def set_configuration(self, configuration):
+    def set_value(self, configuration):
 
         for i, el in enumerate(configuration):
-            self.configuration[i] = el
+            self.value[i] = el
 
     def set_lower_limits(self, lower_limits):
 
         for i, el in enumerate(lower_limits):
             self.lower_limits[i] = el
 
-    def set_upper_limits(self, upper_limtis):
+    def get_lower_limits_arr(self):
 
-        for i, el in enumerate(upper_limtis):
-            self.upper_limtis[i] = el
+        return np.array(self.lower_limits).reshape(self.dim, 1)
+
+    def set_upper_limits(self, upper_limits):
+
+        for i, el in enumerate(upper_limits):
+            self.upper_limits[i] = el
+
+    def get_upper_limits_arr(self):
+
+        return np.array(self.upper_limits).reshape(self.dim, 1)
 
     def clip(self):
 
-        self.configuration = Operations.clip_bound(
-            self.configuration, self.lower_limits, self.upper_limtis)
+        self.value = Operations.clip_bound(
+            self.value, self.lower_limits, self.upper_limits)

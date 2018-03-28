@@ -33,7 +33,7 @@ class rrt_standard(RRT):
     def initialize_random_configuration_in_free(self):
 
         cf = self.initialize_random_configuration()
-        while(!is_config_in_free(cf)):
+        while(not is_config_in_free(cf)):
             cf = self.initialize_random_configuration()
 
         return cf
@@ -51,7 +51,7 @@ class rrt_standard(RRT):
         flag = True
         multiplier = 100
         for i in range(multiplier*int(self.compute_distance(xc, yc))):
-            if(!is_config_in_free(xc.value + (i/(multiplier*int(self.compute_distance(xc, yc))))*(yc_value - xc_value))):
+            if(not is_config_in_free(xc.value + (i/(multiplier*int(self.compute_distance(xc, yc))))*(yc_value - xc_value))):
                 flag = False
 
         return flag

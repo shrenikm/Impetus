@@ -82,24 +82,14 @@ class Configuration(Constants):
         for i, el in enumerate(units):
             self.units[i] = el
 
-    def set_value(self, configuration):
+    def set_value(self, value):
 
-        for i, el in enumerate(configuration):
+        for i, el in enumerate(value):
             self.value[i] = el
-
-    def set_lower_limits(self, lower_limits):
-
-        for i, el in enumerate(lower_limits):
-            self.lower_limits[i] = el
 
     def get_lower_limits_arr(self):
 
         return np.array(self.lower_limits).reshape(self.dim, 1)
-
-    def set_upper_limits(self, upper_limits):
-
-        for i, el in enumerate(upper_limits):
-            self.upper_limits[i] = el
 
     def get_upper_limits_arr(self):
 

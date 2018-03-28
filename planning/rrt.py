@@ -20,16 +20,40 @@ class rrt_standard(RRT):
         rand_base = np.random.rand(self.config.dim, 1)
         a = self.config.get_lower_limits_arr()
         b = self.config.get_upper_limits_arr()
-        return a + rand_base*(b-a)
+        c = a + rand_base*(b-a)
 
-    def compute_distance(self, x, y):
+        cf = Configuration()
+        cf.dim = self.config.dim
+        cf.value = c
+        cf.set_lower_limits = self.config.lower_limits
+        cf.set_upper_limits = self.config.upper_limits
+
+        return cf
+
+    def initialize_random_configuration_in_free(self):
+
+        cf = self.initialize_random_configuration()
+        while(!is_config_in_free(cf)):
+            cf = self.initialize_random_configuration()
+
+        return cf
+
+    def compute_distance(self, xc, yc):
+
+        return np.linalg.norm(xc.value - yc.value)
+
+    def is_config_in_free(self, xc):
 
         pass
 
-    def is_config_in_free(self, x):
+    def is_line_in_free(self, xc, yc):
 
-        pass
+        flag = True
+        multiplier = 100
+        for i in range(multiplier*int(self.compute_distance(xc, yc))):
+            if(!is_config_in_free(xc.value + (i/(multiplier*int(self.compute_distance(xc, yc))))*(yc_value - xc_value))):
+                flag = False
 
-    def is_line_in_free(self, x, y):
+        return flag
 
-        pass
+

@@ -7,7 +7,7 @@ from .. numeric.operations import Operations
 # Class that implements operations related to rotation matrices.
 
 
-class RotMat(Rotation, Operations):
+class RotMat(Rotation):
 
     def __init__(self, angle_units='rad'):
 

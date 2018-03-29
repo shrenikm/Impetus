@@ -6,7 +6,7 @@ from .. kinematics.rotmat import RotMat
 # Class that deals with creating base construct classes for kinematics, dynamcics and planning
 
 
-class Frame(Constants):
+class Frame():
 
     def __init__(
             self, base=None,
@@ -36,38 +36,65 @@ class Frame(Constants):
         return world_origin
 
 
-class Vector(Constants):
+class Vector():
 
     def __init__(self, x=0, y=0, z=0, dist_units=Constants.m, base_frame=Frame()):
 
-        self.base_frame = base_frame
         self.x = x
         self.y = y
         self.z = z
-
-    def get_dist_units(self):
-
-        return self.dist_units
-
-    def set_dist_untis(self, dist_units):
-
+        self.v = np.array([[self.x], [self.y], [self.z]])
         self.dist_units = dist_units
+        self.base_frame = base_frame
 
-    def get_vector(self):
+    def compute_norm(self):
 
-        return np.array([[self.x], [self.y], [self.z]])
+        return Operations.normalize_vector(self.v)
 
     def get_vector_hom(self):
 
-        return np.concatenate((self.get_vector(), np.array([[1]])), axis=0)
+        return np.concatenate((self.v, np.array([[1]])), axis=0)
 
-    def compute_world_vector(self):
+    def compute_world_v(self):
 
         rm = RotMat.gen_rm_all_frame(self.base_frame)
-        return np.dot(rm, self.get_vector())
+        return np.dot(rm, self.v)
 
 
-class Configuration(Constants):
+class Axis():
+
+    def __init__(self, x=0, y=0, z=0, std_axis = None, base_frame=Frame()):
+
+        self.x = x
+        self.y = y
+        self.z = z
+        self.v = Operations.normalize_vector(np.array([[self.x], [self.y], [self.z]]))
+        self.base_frame = base_frame
+        self.std_axis = std_axis 
+
+    @classmethod
+    def compute_global_x(self):
+
+        return Axis(1, 0, 0)
+
+    @classmethod
+    def compute_global_y(self):
+
+        return Axis(0, 1, 0)
+
+    @classmethod
+    def compute_global_z(self):
+
+        return Axis(0, 0, 1)
+
+
+    def compute_world_v(self):
+
+        rm = RotMat.gen_rm_all_frame(self.base_frame)
+        return np.dot(rm, self.v)
+
+
+class Configuration():
 
     def __init__(self, dim=3):
 

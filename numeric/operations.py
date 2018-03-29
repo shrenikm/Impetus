@@ -5,7 +5,7 @@ from constants import Constants
 
 # Class to implement mathematical operations.
 
-class Operations(Constants):
+class Operations():
 
     def __init__(self):
         pass

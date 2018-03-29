@@ -9,7 +9,7 @@ from rotmat import RotMat
 # Class that implements operations related to rotation matrices.
 
 
-class TfMat(Transformation, Operations):
+class TfMat(Transformation):
 
 
     def __init__(self, angle_units='rad', dist_units='m'):

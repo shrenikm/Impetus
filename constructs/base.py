@@ -6,7 +6,7 @@ from .. kinematics.rotmat import RotMat
 # Class that deals with creating base construct classes for kinematics, dynamcics and planning
 
 
-class Frame():
+class Frame(object):
 
     def __init__(
             self, base=None,
@@ -36,7 +36,7 @@ class Frame():
         return world_origin
 
 
-class Vector():
+class Vector(object):
 
     def __init__(self, x=0, y=0, z=0, dist_units=Constants.m, base_frame=Frame()):
 
@@ -61,7 +61,7 @@ class Vector():
         return np.dot(rm, self.v)
 
 
-class Axis():
+class Axis(object):
 
     def __init__(self, x=0, y=0, z=0, std_axis = None, base_frame=Frame()):
 
@@ -94,7 +94,7 @@ class Axis():
         return np.dot(rm, self.v)
 
 
-class Configuration():
+class Configuration(object):
 
     def __init__(self, dim=3):
 

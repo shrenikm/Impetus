@@ -10,6 +10,10 @@ class Constants(object):
     pi = np.pi
     e = np.e
 
+    # Physical constants
+    #TODO: Make these more accurate
+    g = 9.81
+
     # Impetus type constants
     deg, rad = 'deg', 'rad'
     m, mm, cm = 'm', 'mm', 'cm'

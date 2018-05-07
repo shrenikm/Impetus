@@ -61,6 +61,7 @@ class TfMat(Transformation):
 
         return cls.gen_tm_from_rot(rm, frame_end.compute_world_origin() - frame_start.compute_world_origin())
 
+    @classmethod
     def invert(cls, tm):
 
         rm = tm[0:3, 0:3]

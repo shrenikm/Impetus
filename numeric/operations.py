@@ -15,10 +15,25 @@ class Operations():
 
         return math.degrees(angle)
 
+    @classmethod 
+    def rad2deglist(cls, angles):
+
+        for i in range(len(angles)):
+            angles[i]=  math.degrees(angles[i])
+        return angles
+
     @classmethod
     def deg2rad(cls, angle):
 
         return math.radians(angle)
+
+    @classmethod
+    def deg2radlist(cls, angles):
+
+        for i in range(len(angles)):
+            angles[i] = math.radians(angles[i])
+        return angles
+
 
     @classmethod
     def normalize_vector(cls, v):

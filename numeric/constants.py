@@ -21,7 +21,12 @@ class Constants(object):
     ninfinity = "ninfinity"
 
     # Axis constants
-    gx, gy, gz, lx, ly, lz = 'X', 'Y', 'Z', 'x', 'y', 'z'
+    gx = {'ax': 'x', 'type': 'global'}
+    gy = {'ax': 'y', 'type': 'global'}
+    gy = {'ax': 'z', 'type': 'global'}
+    lx = {'ax': 'x', 'type': 'local'}
+    ly = {'ax': 'y', 'type': 'local'}
+    lz = {'ax': 'z', 'type': 'local'}
 
     std_axis_x = np.array([[1], [0], [0]])
     std_axis_y = np.array([[0], [1], [0]])

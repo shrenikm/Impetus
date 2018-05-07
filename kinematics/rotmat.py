@@ -43,10 +43,11 @@ class RotMat(Rotation):
         r_end = RotMat.gen_rm_all_frame(frame_end)
         return np.dot(r_start, r_end.T)
 
-    def gen_rmx(self, angle):
+    @classmethod
+    def gen_rmx(cls, angle):
 
         r = np.zeros([3, 3])
-        r[0, 0] = 1
+        r[0, 0] = 1.0
 
         r[1, 1] = np.cos(angle)
         r[1, 2] = -np.sin(angle)
@@ -55,10 +56,11 @@ class RotMat(Rotation):
 
         return r
 
-    def gen_rmy(self, angle):
+    @classmethod
+    def gen_rmy(cls, angle):
 
         r = np.zeros([3, 3])
-        r[1, 1] = 1
+        r[1, 1] = 1.0
 
         r[0, 0] = np.cos(angle)
         r[0, 2] = np.sin(angle)
@@ -67,10 +69,11 @@ class RotMat(Rotation):
 
         return r
 
-    def gen_rmz(self, angle):
+    @classmethod
+    def gen_rmz(cls, angle):
 
         r = np.zeros([3, 3])
-        r[2, 2] = 1
+        r[2, 2] = 1.0
 
         r[0, 0] = np.cos(angle)
         r[0, 1] = -np.sin(angle)
@@ -79,8 +82,24 @@ class RotMat(Rotation):
 
         return r
 
-    # Euler angle rotation matrices.
+    @classmethod
+    def gen_rm(cls, axis, angle):
 
-    def gen_euler_rm(self, angles, seq):
+        r = np.zeros([3, 3])
+
+        if axis == 'x':
+            r = RotMat.gen_rmx(angle)
+        if axis == 'y':
+            r = RotMat.gen_rmy(angle)
+        if axis == 'z':
+            r = RotMat.gen_rmz(angle)
+
+        return r
+
+
+    # Euler angle rotation matrices.
+    #Use rotseq for now. Separate euler angle function seems to be redundant
+
+    def gen_rm_euler(self, angles, seq):
 
         pass

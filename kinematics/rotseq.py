@@ -10,22 +10,14 @@ from .. constructs.base import Axis
 
 class RotSeq(Rotation):
 
-    def __init__(self, angle_units='rad'):
+    def __init__(self):
 
-        super(RotSeq, self).__init__(angle_units)
+        super(RotSeq, self).__init__()
         self.sequence = [[], []]
+        
 
-    def get_angle_units(self):
+    def add_rotation(self, axes, angles):
 
-        return super(RotSeq, self).get_angle_units()
-
-    def set_angle_units(self, angle_units):
-
-        super(RotSeq, self).set_angle_units(angle_units)
-
-    def add_rotation(self, angles, axes):
-
-        angles = self.conv_angles(angles)
         self.sequence[0] += axes
         self.sequence[1] += angles
         pass

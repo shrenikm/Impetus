@@ -31,6 +31,9 @@ class Constants(object):
     vector_zero = np.array([[0], [0], [0]])
     vector_zero_hom = np.array([[0], [0], [0], [1]])
 
+    vector_one = np.array([[1], [1], [1]])
+    vector_one_hom = np.array([[1], [1], [1], [1]])
+
     mat3_zero = np.zeros([3, 3])
     mat4_zero = np.zeros([4, 4])
 

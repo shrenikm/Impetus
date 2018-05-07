@@ -8,29 +8,16 @@ from rotmat import RotMat
 
 # Class that implements operations related to rotation matrices.
 
+#All angles must be in radians and all distances in meters
+
 
 class TfMat(Transformation):
 
 
-    def __init__(self, angle_units='rad', dist_units='m'):
+    def __init__(self):
 
-        super(TfMat, self).__init__(angle_units, dist_units)
+        super(TfMat, self).__init__()
 
-    def get_angle_units(self):
-
-        return super(TfMat, self).get_angle_units()
-
-    def get_dist_units(self):
-
-        return super(TfMat, self).get_dist_units()
-
-    def set_angle_units(self, angle_units):
-
-        super(TfMat, self).set_angle_units(angle_units)
-
-    def set_dist_units(self, dist_units):
-
-        super(TfMat, self).set_dist_units(dist_units)
 
     @classmethod
     def gen_tm_from_rot(cls, rm, d=Constants.vector_zero):

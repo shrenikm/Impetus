@@ -9,17 +9,9 @@ from .. numeric.operations import Operations
 
 class RotMat(Rotation):
 
-    def __init__(self, angle_units='rad'):
+    def __init__(self):
 
-        super(RotMat, self).__init__(angle_units)
-
-    def get_angle_units(self):
-
-        return super(RotMat, self).get_angle_units()
-
-    def set_angle_units(self, angle_units):
-
-        super(RotMat, self).set_angle_units(angle_units)
+        super(RotMat, self).__init__()
 
     @classmethod
     def gen_rm_single_frame(cls, frame):
@@ -56,8 +48,6 @@ class RotMat(Rotation):
         r = np.zeros([3, 3])
         r[0, 0] = 1
 
-        angle = self.conv_angle(angle)
-
         r[1, 1] = np.cos(angle)
         r[1, 2] = -np.sin(angle)
         r[2, 1] = np.sin(angle)
@@ -70,8 +60,6 @@ class RotMat(Rotation):
         r = np.zeros([3, 3])
         r[1, 1] = 1
 
-        angle = self.conv_angle(angle)
-
         r[0, 0] = np.cos(angle)
         r[0, 2] = np.sin(angle)
         r[2, 0] = -np.sin(angle)
@@ -83,8 +71,6 @@ class RotMat(Rotation):
 
         r = np.zeros([3, 3])
         r[2, 2] = 1
-
-        angle = self.conv_angle(angle)
 
         r[0, 0] = np.cos(angle)
         r[0, 1] = -np.sin(angle)

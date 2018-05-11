@@ -38,13 +38,12 @@ class Frame(object):
 
 class Vector(object):
 
-    def __init__(self, x=0, y=0, z=0, dist_units=Constants.m, base_frame=Frame()):
+    def __init__(self, x=0, y=0, z=0, base_frame=Frame()):
 
         self.x = x
         self.y = y
         self.z = z
         self.v = np.array([[self.x], [self.y], [self.z]])
-        self.dist_units = dist_units
         self.base_frame = base_frame
 
     def compute_norm(self):
@@ -63,9 +62,8 @@ class Vector(object):
 
 class Axis(object):
 
-    def __init__(self, x=0, y=0, z=0, std_axis = None, base_frame=Frame()):
+    def __init__(self, x=0, y=0, z=0, std_axis = None, base_frame = Frame()):
 
-        self.x = x
         self.y = y
         self.z = z
         self.v = Operations.normalize_vector(np.array([[self.x], [self.y], [self.z]]))
@@ -73,17 +71,17 @@ class Axis(object):
         self.std_axis = std_axis 
 
     @classmethod
-    def compute_global_x(self):
+    def gen_global_x(self):
 
         return Axis(1, 0, 0)
 
     @classmethod
-    def compute_global_y(self):
+    def gen_global_y(self):
 
         return Axis(0, 1, 0)
 
     @classmethod
-    def compute_global_z(self):
+    def gen_global_z(self):
 
         return Axis(0, 0, 1)
 
@@ -99,20 +97,15 @@ class Configuration(object):
     def __init__(self, dim=3):
 
         self.dim = dim
-        self.units = [Constants.m]*self.dim
         self.lower_limits = [Constants.ninfinity]*self.dim
         self.upper_limits = [Constants.infinity]*self.dim
         self.value = np.zeros([self.dim, 1])
-
-    def set_units(self, units):
-
-        for i, el in enumerate(units):
-            self.units[i] = el
 
     def set_value(self, value):
 
         for i, el in enumerate(value):
             self.value[i] = el
+
 
     def get_lower_limits_arr(self):
 

@@ -1,21 +1,22 @@
 import numpy as np 
 
+from rigidbody import RigidBody
 from base import Frame, Vector, Axis
 from .. numeric.constants import Constants 
 from .. numeric.operations import Operations 
 
 
 #TODO: Add local frame computation for all geometric objects
+#TODO: Add computation of inertia tensors and shift theorem
 
-class Cube(object):
+class Cube(RigidBody):
 
-    def __init__(self, units = Constants.m, size = 1.0, center = Vector()):
+    def __init__(self, size=1.0, com=Vector()):
 
-        self.units = units 
+        super(Cube, self).__init__(1.0, com)
+        
         self.size = size 
-        self.center = center 
-        self.base_frame = center.base_frame 
-        self.mass = 1
+        self.base_frame = self.com.base_frame 
 
     def compute_surface_area(self):
 
@@ -27,19 +28,18 @@ class Cube(object):
 
     def compute_density(self):
 
-        return self.mass/self.compute_volume
+        return self.mass/self.compute_volume()
 
-class Cuboid(object):
+class Cuboid(RigidBody):
 
-    def __init__(self, units = Constants.m, size_x = 1.0, size_y = 1.0, size_z =1.0, center = Vector()):
+    def __init__(self, size_x=1.0, size_y=1.0, size_z=1.0, com=Vector()):
 
-        self.units = units 
+        super(Cuboid, self).__init__(1.0, com)
+
         self.size_x = size_x 
         self.size_y = size_y 
         self.size_z = size_z 
-        self.center = center 
-        self.base_frame = center.base_frame
-        self.mass = 1.0
+        self.base_frame = self.com.base_frame
 
     def compute_surface_area(self):
 
@@ -51,17 +51,15 @@ class Cuboid(object):
 
     def compute_density(self):
 
-        return self.mass/self.compute_volume
+        return self.mass/self.compute_volume()
 
-class Sphere(object):
+class Sphere(RigidBody):
 
-    def __init__(self, units = Constants.m, radius = 1.0, center = Vector()):
+    def __init__(self, radius = 1.0, com = Vector()):
 
-        self.units = units 
+        super(Sphere, self).__init__(1.0, com)
         self.radius = radius 
-        self.center = center
-        self.base_frame = center.
-        self.mass = 1.0
+        self.base_frame = self.com.base_frame
 
     def compute_surface_area(self):
 
@@ -73,19 +71,17 @@ class Sphere(object):
 
     def compute_density(self):
 
-        return self.mass/self.compute_volume
+        return self.mass/self.compute_volume()
 
 
-class Cylinder(object):
+class Cylinder(RigidBody):
 
-    def __init__(self, units = Constants.m, radius = 1.0, height = 1.0, center = Vector()):
+    def __init__(self, radius = 1.0, height = 1.0, com = Vector()):
 
-        self.units = units 
+        super(Cylinder, self).__init__(1.0, com)
         self.radius = radius 
         self.height = height 
-        self.center = center 
-        self.base_frame = center.base_frame
-        self.mass = 1.0
+        self.base_frame = self.com.base_frame
 
     def compute_surface_area(self):
 
@@ -97,7 +93,7 @@ class Cylinder(object):
 
     def compute_density(self):
 
-        return self.mass/self.compute_volume
+        return self.mass/self.compute_volume()
 
 
 

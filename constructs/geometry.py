@@ -11,9 +11,9 @@ from .. numeric.operations import Operations
 
 class Cube(RigidBody):
 
-    def __init__(self, size=1.0, com=Vector()):
+    def __init__(self, mass=1.0, size=1.0, com=Vector()):
 
-        super(Cube, self).__init__(1.0, com)
+        super(Cube, self).__init__(mass, com)
         
         self.size = size 
         self.base_frame = self.com.base_frame 
@@ -32,9 +32,9 @@ class Cube(RigidBody):
 
 class Cuboid(RigidBody):
 
-    def __init__(self, size_x=1.0, size_y=1.0, size_z=1.0, com=Vector()):
+    def __init__(self, mass=1.0, size_x=1.0, size_y=1.0, size_z=1.0, com=Vector()):
 
-        super(Cuboid, self).__init__(1.0, com)
+        super(Cuboid, self).__init__(mass, com)
 
         self.size_x = size_x 
         self.size_y = size_y 
@@ -55,9 +55,9 @@ class Cuboid(RigidBody):
 
 class Sphere(RigidBody):
 
-    def __init__(self, radius = 1.0, com = Vector()):
+    def __init__(self, mass=1.0, radius = 1.0, com = Vector()):
 
-        super(Sphere, self).__init__(1.0, com)
+        super(Sphere, self).__init__(mass, com)
         self.radius = radius 
         self.base_frame = self.com.base_frame
 
@@ -76,9 +76,9 @@ class Sphere(RigidBody):
 
 class Cylinder(RigidBody):
 
-    def __init__(self, radius = 1.0, height = 1.0, com = Vector()):
+    def __init__(self, mass=1.0, radius = 1.0, height = 1.0, com = Vector()):
 
-        super(Cylinder, self).__init__(1.0, com)
+        super(Cylinder, self).__init__(mass, com)
         self.radius = radius 
         self.height = height 
         self.base_frame = self.com.base_frame

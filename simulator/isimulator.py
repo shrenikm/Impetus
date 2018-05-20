@@ -1,6 +1,8 @@
 import vtk
 import numpy as np 
 
+from .. numeric.constants import RenderObjects
+
 #Class that implements the main Impetuts simulator
 
 class ISimulator(object):
@@ -32,6 +34,15 @@ class ISimulator(object):
     def set_background_color(self, bg_color):
 
         self.renderer.SetBackground(bg_color[0], bg_color[1], bg_color[2])
+
+
+    def draw_object(self, obj):
+
+        if(obj.render_object == RenderObjects.frame):
+            axes = vtk.vtkAxesActor()
+            self.renderer.AddActor(axes)
+
+
 
     def render(self):
 

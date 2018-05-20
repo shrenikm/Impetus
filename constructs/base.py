@@ -1,6 +1,7 @@
 import numpy as np
 
 from .. numeric.constants import Constants
+from .. numeric.constants import RenderObjects
 from .. numeric.operations import Operations
 from .. kinematics.rotmat import RotMat
 # Class that deals with creating base construct classes for kinematics, dynamcics and planning
@@ -22,6 +23,8 @@ class Frame(object):
         self.z = Operations.normalize_vector(z)
         self.origin = origin
         self.is_std = is_std
+
+        self.render_object = RenderObjects.frame
 
     def compute_world_origin(self):
 
@@ -45,6 +48,8 @@ class Vector(object):
         self.z = z
         self.v = np.array([[self.x], [self.y], [self.z]])
         self.base_frame = base_frame
+
+        self.render_object = RenderObjects.vector
 
     def compute_norm(self):
 

@@ -56,3 +56,33 @@ class Colors(object):
     blue_d = [0, 0, 255, 255]
 
 
+class RenderObjects(object):
+
+    frame = "Frame"
+    vector = "Vector"
+    sphere = "Sphere"
+    cube = "Cube"
+    cuboid = "Cuboid"
+    cylinder = "Cylinder"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

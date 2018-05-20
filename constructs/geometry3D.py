@@ -18,6 +18,8 @@ class Cube(RigidBody):
         self.size = size 
         self.base_frame = self.com.base_frame 
 
+        self.render_object = RenderObjects.cube
+
     def compute_surface_area(self):
 
         return 6*(self.size**2)
@@ -41,6 +43,8 @@ class Cuboid(RigidBody):
         self.size_z = size_z 
         self.base_frame = self.com.base_frame
 
+        self.render_object = RenderObjects.cuboid
+
     def compute_surface_area(self):
 
         return 2*(self.size_x*self.size_y + self.size_y*self.size_z + self.size_z*self.size_x)
@@ -60,6 +64,8 @@ class Sphere(RigidBody):
         super(Sphere, self).__init__(mass, com)
         self.radius = radius 
         self.base_frame = self.com.base_frame
+
+        self.render_object = RenderObjects.sphere
 
     def compute_surface_area(self):
 
@@ -82,6 +88,8 @@ class Cylinder(RigidBody):
         self.radius = radius 
         self.height = height 
         self.base_frame = self.com.base_frame
+
+        self.render_object = RenderObjects.cylinder
 
     def compute_surface_area(self):
 

@@ -22,16 +22,25 @@ class ISimulator(object):
         self.colors.SetColor("bg_color", bg_color)
         self.renderer.SetBackground(self.colors.GetColor3d("bg_color"))
 
+
     def set_window_size(self, width, height):
 
         self.width = width
         self.height = height
         self.render_window.SetSize(self.width, self.height)
 
+    def set_background_color(self, bg_color):
+
+        self.renderer.SetBackground(bg_color[0], bg_color[1], bg_color[2])
 
     def render(self):
 
         self.render_window.Render()
         self.render_window_interactor.Start()
+
+    def update(self):
+
+        self.render_window.SetSize(self.width, self.height)
+        self.renderer.SetBackground(self.colors.GetColor3d("bg_color"))
         
 

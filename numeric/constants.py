@@ -43,3 +43,16 @@ class Constants(object):
     mat4_zero = np.zeros([4, 4])
 
 
+class Colors(object):
+
+    #Floating point
+    red_f = [1.0, 0.0, 0.0, 1.0]
+    green_f = [0.0, 1.0, 0.0, 1.0]
+    blue_f = [0.0, 0.0, 1.0, 1.0]
+
+    #Integer
+    red_d = [255, 0, 0, 255]
+    green_d = [0, 255, 0, 255]
+    blue_d = [0, 0, 255, 255]
+
+

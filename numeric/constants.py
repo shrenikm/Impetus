@@ -46,15 +46,40 @@ class Matrices(object):
 
 class Colors(object):
 
-    #Floating point
-    red_f = [1.0, 0.0, 0.0, 1.0]
-    green_f = [0.0, 1.0, 0.0, 1.0]
-    blue_f = [0.0, 0.0, 1.0, 1.0]
+    #Floating point with alpha
+    red_fa = (1.0, 0.0, 0.0, 1.0)
+    green_fa = (0.0, 1.0, 0.0, 1.0)
+    blue_fa = (0.0, 0.0, 1.0, 1.0)
+    yellow_fa = (1.0, 0.5, 0, 1.0)
+    brown_fa = (0.59, 0.29, 0.0, 1.0)
 
-    #Integer
-    red_d = [255, 0, 0, 255]
-    green_d = [0, 255, 0, 255]
-    blue_d = [0, 0, 255, 255]
+    #Integer with alpha
+    red_ia = (255, 0, 0, 255)
+    green_ia = (0, 255, 0, 255)
+    blue_ia = (0, 0, 255, 255)
+    yellow_ia = (255, 127, 0, 255)
+    brown_ia = (150, 75, 0, 255)
+
+    #Floating point without alpha
+    red_f = red_fa[0:3]
+    green_f = green_fa[0:3]
+    blue_f = blue_fa[0:3]
+    yellow_f = yellow_fa[0:3]
+    brown_f = brown_fa[0:3]
+
+    #Integer without alpha
+    red_i = red_ia[0:3]
+    green_i = green_ia[0:3]
+    blue_i = blue_ia[0:3]
+    yellow_i = yellow_ia[0:3]
+    brown_i = brown_ia[0:3]
+
+    
+
+
+
+
+
 
 
 class RenderObjects(object):

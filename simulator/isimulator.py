@@ -49,10 +49,134 @@ class ISimulator(object):
             axes.SetUserTransform(tmp_transform)
             self.renderer.AddActor(axes)
 
+            return axes
+
         if(obj.render_object == RenderObjects.cube):
 
-            print("Cube")
+            cube = vtk.vtkCubeSource()
 
+            cube.SetXLength(obj.size)
+            cube.SetYLength(obj.size)
+            cube.SetZLength(obj.size)
+            cube.SetCenter(obj.com.v)
+
+            tmp_cube_mapper = vtk.vtkPolyDataMapper()
+            tmp_cube_mapper.SetInputConnection(cube.GetOutputPort())
+            cube_actor = vtk.vtkActor()
+            cube_actor.SetMapper(tmp_cube_mapper)
+            cube_actor.GetProperty().SetColor(obj.color)
+
+            self.renderer.AddActor(cube_actor)
+
+            return cube_actor
+
+        if(obj.render_object == RenderObjects.cuboid):
+
+            cuboid = vtk.vtkCubeSource()
+
+            cuboid.SetXLength(obj.size_x)
+            cuboid.SetYLength(obj.size_y)
+            cuboid.SetZLength(obj.size_z)
+            cuboid.SetCenter(obj.com.v)
+
+            tmp_cuboid_mapper = vtk.vtkPolyDataMapper()
+            tmp_cuboid_mapper.SetInputConnection(cuboid.GetOutputPort())
+            cuboid_actor = vtk.vtkActor()
+            cuboid_actor.SetMapper(tmp_cuboid_mapper)
+            cuboid_actor.GetProperty().SetColor(obj.color)
+
+            self.renderer.AddActor(cuboid_actor)
+
+            return cuboid_actor
+
+        if(obj.render_object == RenderObjects.sphere):
+
+            sphere = vtk.vtkSphereSource()
+
+            sphere.SetRadius(obj.radius)
+            sphere.SetCenter(obj.com.v)
+            sphere.SetThetaResolution(obj.theta_resolution)
+            sphere.SetPhiResolution(obj.phi_resolution)
+
+            tmp_sphere_mapper = vtk.vtkPolyDataMapper()
+            tmp_sphere_mapper.SetInputConnection(sphere.GetOutputPort())
+            sphere_actor = vtk.vtkActor()
+            sphere_actor.SetMapper(tmp_sphere_mapper)
+            sphere_actor.GetProperty().SetColor(obj.color)
+
+            self.renderer.AddActor(sphere_actor)
+
+            return sphere_actor
+
+        if(obj.render_object == RenderObjects.cylinder):
+
+            cylinder = vtk.vtkCylinderSource()
+
+            cylinder.SetRadius(obj.radius)
+            cylinder.SetHeight(obj.height)
+            cylinder.SetResolution(obj.theta_resolution)
+
+            tmp_cylinder_mapper = vtk.vtkPolyDataMapper()
+            tmp_cylinder_mapper.SetInputConnection(cylinder.GetOutputPort())
+            cylinder_actor = vtk.vtkActor()
+            cylinder_actor.SetMapper(tmp_cylinder_mapper)
+            cylinder_actor.GetProperty().SetColor(obj.color)
+
+            self.renderer.AddActor(cylinder_actor)
+
+            return cylinder_actor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
 
 
     def render_display(self):

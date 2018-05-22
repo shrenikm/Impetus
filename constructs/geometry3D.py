@@ -3,7 +3,7 @@ import math
 
 from rigidbody import RigidBody
 from base import Frame, Vector, Axis
-from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
+from .. numeric.constants import Physical, Units, Struct, Matrices, Colors, RenderObjects
 from .. numeric.operations import Operations 
 
 
@@ -19,9 +19,11 @@ class Cube(RigidBody):
         self.size = size 
         self.base_frame = self.com.base_frame 
 
+        #Render information
         self.render_object = RenderObjects.cube
+        self.color = Colors.green_i
 
-    def compute_surface_area(self):
+    def compute_area(self):
 
         return 6*(self.size**2)
 
@@ -45,8 +47,9 @@ class Cuboid(RigidBody):
         self.base_frame = self.com.base_frame
 
         self.render_object = RenderObjects.cuboid
+        self.color = Colors.yellow_i
 
-    def compute_surface_area(self):
+    def compute_area(self):
 
         return 2*(self.size_x*self.size_y + self.size_y*self.size_z + self.size_z*self.size_x)
 
@@ -60,15 +63,18 @@ class Cuboid(RigidBody):
 
 class Sphere(RigidBody):
 
-    def __init__(self, mass=1.0, radius = 1.0, com = Vector()):
+    def __init__(self, mass=1.0, radius = 1.0, com=Vector()):
 
         super(Sphere, self).__init__(mass, com)
         self.radius = radius 
         self.base_frame = self.com.base_frame
 
         self.render_object = RenderObjects.sphere
+        self.color = Colors.blue_i
+        self.theta_resolution = 30
+        self.phi_resolution = 30
 
-    def compute_surface_area(self):
+    def compute__area(self):
 
         return 4*math.pi*(self.radius**2)
 
@@ -83,7 +89,7 @@ class Sphere(RigidBody):
 
 class Cylinder(RigidBody):
 
-    def __init__(self, mass=1.0, radius = 1.0, height = 1.0, com = Vector()):
+    def __init__(self, mass=1.0, radius = 1.0, height = 1.0, com=Vector()):
 
         super(Cylinder, self).__init__(mass, com)
         self.radius = radius 
@@ -91,8 +97,10 @@ class Cylinder(RigidBody):
         self.base_frame = self.com.base_frame
 
         self.render_object = RenderObjects.cylinder
+        self.color = Colors.red_i
+        self.theta_resolution = 30
 
-    def compute_surface_area(self):
+    def compute__area(self):
 
         return 2*math.pi*self.radius*self.height
 
@@ -103,8 +111,6 @@ class Cylinder(RigidBody):
     def compute_density(self):
 
         return self.mass/self.compute_volume()
-
-
 
 
 

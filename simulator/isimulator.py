@@ -15,7 +15,10 @@ class ISimulator(object):
         self.renderer = vtk.vtkRenderer()
         self.render_window = vtk.vtkRenderWindow()
         self.render_window_interactor = vtk.vtkRenderWindowInteractor()
+
         self.render_window.AddRenderer(self.renderer)
+        #Changes interaction style to trackball rather than the default click movement
+        self.render_window_interactor.GetInteractorStyle().SetCurrentStyleToTrackballCamera()
         self.render_window_interactor.SetRenderWindow(self.render_window)
 
         self.render_window.SetSize(self.width, self.height)
@@ -39,15 +42,27 @@ class ISimulator(object):
     def draw_object(self, obj):
 
         if(obj.render_object == RenderObjects.frame):
+
+            tmp_transform = vtk.vtkTransform()
+            tmp_transform.Translate(obj.origin[0, 0], obj.origin[1, 0], obj.origin[2, 0])
             axes = vtk.vtkAxesActor()
+            axes.SetUserTransform(tmp_transform)
             self.renderer.AddActor(axes)
 
+        if(obj.render_object == RenderObjects.cube):
+
+            print("Cube")
 
 
-    def render(self):
+
+    def render_display(self):
 
         self.render_window.Render()
         self.render_window_interactor.Start()
+
+    def render(self):
+        
+        self.render_window.Render()
 
     def update(self):
 

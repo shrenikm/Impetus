@@ -3,22 +3,21 @@ import math
 
 # Class to store constants for the library.
 
-
-class Constants(object):
-
-    # Mathematical constants
-    pi = np.pi
-    e = np.e
+class Physical(object):
 
     # Physical constants
     #TODO: Make these more accurate
     g = 9.81
+
+class Units(object):
 
     # Impetus type constants
     deg, rad = 'deg', 'rad'
     m, mm, cm = 'm', 'mm', 'cm'
     infinity = "infinity"
     ninfinity = "ninfinity"
+
+class Struct(object):
 
     # Axis constants
     gx = {'ax': 'x', 'type': 'global'}
@@ -27,6 +26,8 @@ class Constants(object):
     lx = {'ax': 'x', 'type': 'local'}
     ly = {'ax': 'y', 'type': 'local'}
     lz = {'ax': 'z', 'type': 'local'}
+
+class Matrices(object):
 
     std_axis_x = np.array([[1], [0], [0]])
     std_axis_y = np.array([[0], [1], [0]])

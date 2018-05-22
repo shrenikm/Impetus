@@ -1,8 +1,9 @@
 import numpy as np
+import math
 
 from rotation import Rotation
 from rotmat import RotMat
-from .. numeric.constants import Constants
+from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
 from .. numeric.operations import Operations
 from .. constructs.base import Axis
 

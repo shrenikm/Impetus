@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-from constants import Constants
+from constants import Physical, Units, Struct, Matrices, RenderObjects
 
 # Class to implement mathematical operations.
 
@@ -45,9 +45,9 @@ class Operations():
 
         for i in range(len(lower)):
 
-            if x[i] < lower[i] and lower[i] != Constants.ninfinity:
+            if x[i] < lower[i] and lower[i] != Units.ninfinity:
                 x[i] = lower[i]
-            if x[i] > upper[i] and upper[i] != Constants.infinity:
+            if x[i] > upper[i] and upper[i] != Units.infinity:
                 x[i] = upper[i]
 
         return x

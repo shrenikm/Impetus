@@ -1,11 +1,9 @@
 from abc import ABCMeta, abstractmethod
 
 import numpy as np
-from math import sin
-from math import cos
-from math import pi
+import math
 
-from .. numeric.constants import Constants
+from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
 from .. numeric.operations import Operations
 
 

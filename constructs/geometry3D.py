@@ -1,8 +1,9 @@
 import numpy as np 
+import math
 
 from rigidbody import RigidBody
 from base import Frame, Vector, Axis
-from .. numeric.constants import Constants 
+from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
 from .. numeric.operations import Operations 
 
 
@@ -69,11 +70,11 @@ class Sphere(RigidBody):
 
     def compute_surface_area(self):
 
-        return 4*Constants.pi*(self.radius**2)
+        return 4*math.pi*(self.radius**2)
 
     def compute_volume(self):
 
-        return (4.0/3.0)*Constants.pi*(self.radius**3)
+        return (4.0/3.0)*math.pi*(self.radius**3)
 
     def compute_density(self):
 
@@ -93,11 +94,11 @@ class Cylinder(RigidBody):
 
     def compute_surface_area(self):
 
-        return 2*Constants.pi*self.radius*self.height
+        return 2*math.pi*self.radius*self.height
 
     def compute_volume(self):
 
-        return Constants.pi*(self.radius**2)*self.height
+        return math.pi*(self.radius**2)*self.height
 
     def compute_density(self):
 

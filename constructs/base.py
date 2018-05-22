@@ -1,7 +1,7 @@
 import numpy as np
+import math
 
-from .. numeric.constants import Constants
-from .. numeric.constants import RenderObjects
+from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
 from .. numeric.operations import Operations
 from .. kinematics.rotmat import RotMat
 # Class that deals with creating base construct classes for kinematics, dynamcics and planning
@@ -11,10 +11,10 @@ class Frame(object):
 
     def __init__(
             self, base=None,
-            x=Constants.std_axis_x,
-            y=Constants.std_axis_y,
-            z=Constants.std_axis_z,
-            origin=Constants.std_origin,
+            x=Matrices.std_axis_x,
+            y=Matrices.std_axis_y,
+            z=Matrices.std_axis_z,
+            origin=Matrices.std_origin,
             is_std=True):
 
         self.base = base
@@ -28,7 +28,7 @@ class Frame(object):
 
     def compute_world_origin(self):
 
-        world_origin = Constants.vector_zero
+        world_origin = Matrices.vector_zero
         tmp_frame = self
 
         while tmp_frame.base is not None:
@@ -102,8 +102,8 @@ class Configuration(object):
     def __init__(self, dim=3):
 
         self.dim = dim
-        self.lower_limits = [Constants.ninfinity]*self.dim
-        self.upper_limits = [Constants.infinity]*self.dim
+        self.lower_limits = [Units.ninfinity]*self.dim
+        self.upper_limits = [Units.infinity]*self.dim
         self.value = np.zeros([self.dim, 1])
 
     def set_value(self, value):

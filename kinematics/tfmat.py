@@ -1,7 +1,8 @@
 import numpy as np
+import math
 
 from transformation import Transformation
-from .. numeric.constants import Constants
+from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
 from .. numeric.operations import Operations
 from .. constructs.base import Frame
 from rotmat import RotMat
@@ -20,10 +21,10 @@ class TfMat(Transformation):
 
 
     @classmethod
-    def gen_tm_from_rot(cls, rm, d=Constants.vector_zero):
+    def gen_tm_from_rot(cls, rm, d=Matrices.vector_zero):
 
         t = np.concatenate((np.concatenate((rm, d), axis=1),
-                            Constants.vector_zero_hom.T), axis=0)
+                            Matrices.vector_zero_hom.T), axis=0)
 
         return t
 

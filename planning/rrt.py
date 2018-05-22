@@ -1,7 +1,8 @@
 import numpy as np
+import math
 import random
 
-from .. numeric.constants import Constants
+from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
 from .. numeric.operations import Operations
 from .. constructs.base import Configuration
 from .. planning.base import RRT

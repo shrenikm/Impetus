@@ -64,16 +64,12 @@ class Vector(object):
         rm = RotMat.gen_rm_all_frame(self.base_frame)
         return np.dot(rm, self.v)
 
+class Axis(Vector):
 
-class Axis(object):
+    def __init__(self, x=0, y=0, z=0, base_frame=Frame()):
 
-    def __init__(self, x=0, y=0, z=0, std_axis = None, base_frame = Frame()):
-
-        self.y = y
-        self.z = z
+        super(Axis, self).__init__(x, y, z, base_frame)
         self.v = Operations.normalize_vector(np.array([[self.x], [self.y], [self.z]]))
-        self.base_frame = base_frame
-        self.std_axis = std_axis 
 
     @classmethod
     def gen_global_x(self):

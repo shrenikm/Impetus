@@ -10,24 +10,22 @@ from .. numeric.operations import Operations
 #TODO: Add local frame computation for all geometric objects
 #TODO: Add computation of inertia tensors and shift theorem
 
-class Disc(RigidBody):
+class Line(RigidBody):
 
-    def __init__(self, mass=1.0, radius=1.0, com=Vector()):
+    def __init__(self, mass=1.0, length=1.0, com=Vector()):
 
-        super(Disc, self).__init__(mass, com)
-        self.radius = radius
+        super(Line, self).__init__(mass, com)
+        self.length = length
         self.base_frame = self.com.base_frame
 
-        self.render_object = RenderObjects.disc
+        self.render_object = RenderObjects.line
         self.color = Colors.brown
 
-    def compute_surface_area(self):
-
-        return 2*math.pi*self.radius
 
     def compute_density(self):
 
-        return self.mass/self.compute_area()
+        return self.mass/self.length
+
 
 
 

@@ -36,7 +36,7 @@ class ISimulator(object):
 
     def set_background_color(self, bg_color):
 
-        self.renderer.SetBackground(bg_color[0], bg_color[1], bg_color[2])
+        self.renderer.SetBackground(bg_color)
 
 
     def draw_object(self, obj):

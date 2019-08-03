@@ -74,13 +74,6 @@ class Colors(object):
     yellow_i = yellow_ia[0:3]
     brown_i = brown_ia[0:3]
 
-    
-
-
-
-
-
-
 
 class RenderObjects(object):
 

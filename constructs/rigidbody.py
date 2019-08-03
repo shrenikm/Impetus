@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import numpy as np 
 
-from base import Vector
+from Impetus.constructs.base import Vector
 
 #Rigid body class that is that parent class of all other 3d geometric objects
 

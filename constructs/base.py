@@ -1,9 +1,9 @@
 import numpy as np
 import math
 
-from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
-from .. numeric.operations import Operations
-from .. kinematics.rotmat import RotMat
+from Impetus.kinematics.rotmat import RotMat
+from Impetus.numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
+from Impetus.numeric.operations import Operations
 # Class that deals with creating base construct classes for kinematics, dynamcics and planning
 
 
@@ -95,7 +95,7 @@ class Axis(Vector):
 
 class Configuration(object):
 
-    def __init__(self, dim=3):
+    def __init__(self, dim):
 
         self.dim = dim
         self.lower_limits = [Units.ninfinity]*self.dim

@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-from constants import Physical, Units, Struct, Matrices, RenderObjects
+from Impetus.numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
 
 # Class to implement mathematical operations.
 

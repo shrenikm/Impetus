@@ -1,11 +1,11 @@
 import numpy as np
 import math
 
-from transformation import Transformation
-from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
-from .. numeric.operations import Operations
-from .. constructs.base import Frame
-from rotmat import RotMat
+from Impetus.constructs.base import Frame
+from Impetus.kinematics.rotmat import RotMat
+from Impetus.kinematics.transformation import Transformation
+from Impetus.numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
+from Impetus.numeric.operations import Operations
 
 # Class that implements operations related to rotation matrices.
 

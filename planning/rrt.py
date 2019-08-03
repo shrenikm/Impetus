@@ -2,17 +2,17 @@ import numpy as np
 import math
 import random
 
-from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
-from .. numeric.operations import Operations
-from .. constructs.base import Configuration
-from .. planning.base import RRT
+from Impetus.numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
+from Impetus.numeric.operations import Operations
+from Impetus.constructs.base import Configuration
+from Impetus.planning.base import RRT
 
 # Standard RRT implementations
 
 
 class rrt_standard(RRT):
 
-    def __init__(self, config=Configuration()):
+    def __init__(self, config):
 
         super(rrt_standard, self).__init__(config)
 
@@ -23,8 +23,7 @@ class rrt_standard(RRT):
         b = self.config.get_upper_limits_arr()
         c = a + rand_base*(b-a)
 
-        cf = Configuration()
-        cf.dim = self.config.dim
+        cf = Configuration(self.config.dim)
         cf.value = c
         cf.set_lower_limits = self.config.lower_limits
         cf.set_upper_limits = self.config.upper_limits

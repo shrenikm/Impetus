@@ -1,10 +1,10 @@
 import numpy as np 
 import math
 
-from rigidbody import RigidBody
-from base import Frame, Vector, Axis
-from .. numeric.constants import Physical, Units, Struct, Matrices, Colors, RenderObjects
-from .. numeric.operations import Operations 
+from Impetus.constructs.base import Frame, Vector, Axis
+from Impetus.constructs.rigidbody import RigidBody
+from Impetus.numeric.constants import Physical, Units, Struct, Matrices, Colors, RenderObjects
+from Impetus.numeric.operations import Operations 
 
 
 #TODO: Add local frame computation for all geometric objects

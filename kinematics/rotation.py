@@ -3,8 +3,8 @@ from abc import ABCMeta, abstractmethod
 import numpy as np
 import math
 
-from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
-from .. numeric.operations import Operations
+from Impetus.numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
+from Impetus.numeric.operations import Operations
 
 
 # Main class that serves as a blueprint for all rotation related functions.

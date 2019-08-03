@@ -3,9 +3,9 @@ from abc import ABCMeta, abstractmethod
 import numpy as np
 import math
 
-from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
-from .. numeric.operations import Operations
-from .. constructs.base import Configuration
+from Impetus.numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
+from Impetus.numeric.operations import Operations
+from Impetus.constructs.base import Configuration
 
 
 # Blueprint for the RRT construct
@@ -15,7 +15,7 @@ class RRT(object):
 
     __metaclass__ = ABCMeta
 
-    def __init__(self, config=Configuration()):
+    def __init__(self, config):
 
         self.config = config
 

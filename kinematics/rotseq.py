@@ -1,11 +1,11 @@
 import numpy as np
 import math
 
-from rotation import Rotation
-from rotmat import RotMat
-from .. numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
-from .. numeric.operations import Operations
-from .. constructs.base import Axis
+from Impetus.kinematics.rotation import Rotation
+from Impetus.kinematics.rotmat import RotMat
+from Impetus.numeric.constants import Physical, Units, Struct, Matrices, RenderObjects
+from Impetus.numeric.operations import Operations
+from Impetus.constructs.base import Axis
 
 # Class that implements rotation sequences and bundles them in a list representation.
 
